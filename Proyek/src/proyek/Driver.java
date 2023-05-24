@@ -93,9 +93,18 @@ public class Driver {
         try {
             return driver.findElement(By.className(classname));
         } catch (Exception e) {
-            return d.getElementCSS(classname);
+            return d.getElementTag(classname);
         }    
     }
+    
+    private WebElement getElementTag(String tagname) {
+        try {
+            return driver.findElement(By.tagName(tagname));
+        } catch (Exception e) {
+            return d.getElementCSS(tagname);
+        }    
+    }
+
 
     private WebElement getElementCSS(String css) {
         try {

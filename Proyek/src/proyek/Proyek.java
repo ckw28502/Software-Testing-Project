@@ -25,8 +25,16 @@ public class Proyek {
     public static void main(String[] args) {
         Driver.initDriver("https://gruplm.com/", 60);
         Driver.Click("//button[contains(text(),'Allow cookies')]");
-        Pricing();
-        User user=Registration();
+        
+        // BACA SHEET
+        User user=ReadCSV();
+        
+        // BUAT WEBSITE
+        //createWebsite(user);
+        
+        //LOGIN
+        Login(user);
+        
     }
     
     public static void Pricing(){
@@ -37,8 +45,7 @@ public class Proyek {
         Driver.Click(xpath_plutinum);
     }
 
-    private static User Registration() {
-        User user=ReadCSV();
+    private static void Registration(User user) {
         Driver.Type("//input[@name='username']", user.getUsername());
         Driver.Type("//input[@name='email']", user.getEmail());
         Driver.Type("//input[@name='password']", user.getPassword());
@@ -54,7 +61,7 @@ public class Proyek {
         Driver.Click("//li[@data-value='Flutterwave']");
         Driver.waitPresence(By.className("alert-success"));
         Driver.Click("confirmBtn");
-        return user;
+        Driver.Click("a");
     }
 
     private static User ReadCSV() {
@@ -79,6 +86,17 @@ public class Proyek {
             e.printStackTrace();
         }
         return new User(values);
+    }
+
+    private static void createWebsite(User user) {
+        Pricing();
+        Registration(user);
+    }
+
+    private static void Login(User user) {
+        Driver.Click("navbar-btn");
+        Driver.Type("//input[@name='email']", user.getEmail());
+        Driver.Type("//input[@name='password']", user.getPassword()+Keys.ENTER);
     }
     
 }
