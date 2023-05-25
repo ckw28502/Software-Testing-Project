@@ -35,6 +35,9 @@ public class Proyek {
         //LOGIN
         Login(user);
         
+        //Chose Theme
+        chooseTheme();
+        
     }
     
     public static void Pricing(){
@@ -97,6 +100,16 @@ public class Proyek {
         Driver.Click("navbar-btn");
         Driver.Type("//input[@name='email']", user.getEmail());
         Driver.Type("//input[@name='password']", user.getPassword()+Keys.ENTER);
+    }
+
+    private static void chooseTheme() {
+        Driver.Click("//p[contains(text(),'Settings')]");
+        String menu_theme_xpath="//a[@href='https://gruplm.com/user/theme/version']";
+        Driver.waitPresence(By.xpath(menu_theme_xpath));
+        Driver.Click(menu_theme_xpath);
+        Driver.Click(menu_theme_xpath);
+        Driver.Click("//img[@src='https://gruplm.com/assets/front/img/user/templates/home_six.png']");
+        Driver.Click("submitBtn");
     }
     
 }
