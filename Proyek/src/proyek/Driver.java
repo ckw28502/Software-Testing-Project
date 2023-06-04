@@ -26,8 +26,9 @@ public class Driver {
     private static Driver d=null;
     public  Driver(String url,int wait) {
         // Path Calvin Kwan
-        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";
-        
+//        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
+        // Path Ariel
+        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
         ChromeOptions option=new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
@@ -61,7 +62,9 @@ public class Driver {
     public static void waitPresence(By by){
         d.wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
-    
+    public static void waitClick(String by){
+        d.wait.until(ExpectedConditions.elementToBeClickable(getElement(by)));
+    }
     public static void SelectItem(String by, int id){
         Select select=new Select((getElement(by)));
         select.selectByIndex(id);
