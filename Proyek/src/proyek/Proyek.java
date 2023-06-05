@@ -18,6 +18,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import static proyek.Driver.getElement;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 /**
  *
  * @author User
@@ -283,10 +289,48 @@ public class Proyek {
         //add item digital
         Driver.Click("//h2[contains(text(),'Digital Product')]");  
         String slider_xpath="//form[@action='https://gruplm.com/user/item/slider']";
-//        Driver.waitPresence(By.xpath(slider_xpath));
+        Driver.waitPresence(By.xpath(slider_xpath));
         Driver.Click(slider_xpath);  
+        //Driver.getElement("my-dropzone").sendKeys("C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG");
+        
+        //input image
+        String imagePath = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
+        // Simulate keyboard actions to type the image file path in the file manager
+        StringSelection stringSelection = new StringSelection(imagePath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        Robot robot;
+        try {
+            robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+              try {
+                  Thread.sleep(2000); // Wait for the file path to be entered
+              } catch (InterruptedException ex) {
+                  Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+              }
+            // Simulate keyboard actions to press Enter and confirm the file selection
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+              try {
+                  Thread.sleep(2000); // Wait for the file selection to be confirmed
+              } catch (InterruptedException ex) {
+                  Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+              }
+        } catch (AWTException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        WebElement targetElement = Driver.getElement("my-dropzone");
+//        WebDriver driver = new ChromeDriver();  
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(targetElement)
+                .moveByOffset(10, 10) // Adjust the offset as needed
+                .release()
+                .build()
+                .perform();
        
-        Driver.getElement(slider_xpath).sendKeys("C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG");
 
 
 
