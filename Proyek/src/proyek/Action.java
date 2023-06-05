@@ -35,4 +35,12 @@ public class Action {
     public static void buildPerform(WebElement element){
         action.build().perform();
     }
+    
+    public static void DragDrop(WebElement targetElement){
+       action.clickAndHold(targetElement)
+                .moveByOffset(10, 10) // Adjust the offset as needed
+                .release()
+                .build()
+                .perform(); 
+    }
 }

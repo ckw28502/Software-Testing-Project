@@ -269,7 +269,8 @@ public class Proyek {
         Driver.Click(menu_subcategory_xpath);   
         
     }
-      private static void toAdditem() {    
+     
+    private static void toAdditem() {    
           String domains_xpath="//p[contains(text(),'Domains & URLs')]";
         Driver.waitPresence(By.xpath(domains_xpath));
         Driver.Click(domains_xpath);
@@ -295,8 +296,13 @@ public class Proyek {
         
         //input image
         String imagePath = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
-        // Simulate keyboard actions to type the image file path in the file manager
+        // Keyboardnya ngetik sendiri di filemanager
         StringSelection stringSelection = new StringSelection(imagePath);
+        try {
+                  Thread.sleep(2000); // nek ga di wait ga konsisten
+              } catch (InterruptedException ex) {
+                  Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+              }
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
         Robot robot;
         try {
@@ -306,11 +312,11 @@ public class Proyek {
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
               try {
-                  Thread.sleep(2000); // Wait for the file path to be entered
+                  Thread.sleep(2000); 
               } catch (InterruptedException ex) {
                   Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
               }
-            // Simulate keyboard actions to press Enter and confirm the file selection
+            
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
               try {
@@ -322,19 +328,17 @@ public class Proyek {
             Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        WebElement targetElement = Driver.getElement("my-dropzone");
-//        WebDriver driver = new ChromeDriver();  
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(targetElement)
-                .moveByOffset(10, 10) // Adjust the offset as needed
-                .release()
-                .build()
-                .perform();
-       
-
-
-
+// tidak perlu karena tidak di drag drop        
+//        WebElement targetElement = Driver.getElement("my-dropzone");
+//        Action.DragDrop(targetElement);
         
-    }
+//        WebDriver driver = new ChromeDriver();  
+//        Actions actions = new Actions(driver);
+//            actions.clickAndHold(targetElement)
+//                .moveByOffset(10, 10) // Adjust the offset as needed
+//                .release()
+//                .build()
+//                .perform();
     
+    }
 }
