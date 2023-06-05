@@ -26,9 +26,9 @@ public class Driver {
     private static Driver d=null;
     public  Driver(String url,int wait) {
         // Path Calvin Kwan
-//        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
+        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
         // Path Ariel
-        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
+        //String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
         ChromeOptions option=new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");

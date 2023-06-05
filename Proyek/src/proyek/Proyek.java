@@ -132,7 +132,6 @@ public class Proyek {
         String menu_theme_xpath="//a[@href='https://gruplm.com/user/theme/version']";
         Driver.waitPresence(By.xpath(menu_theme_xpath));
         Driver.Click(menu_theme_xpath);
-//        Driver.Click(menu_theme_xpath);
         Driver.Click("//img[@src='https://gruplm.com/assets/front/img/user/templates/home_six.png']");
         Driver.Click("submitBtn");
     }
