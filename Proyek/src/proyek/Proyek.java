@@ -255,30 +255,41 @@ public class Proyek {
 //        Driver.waitPresence(By.xpath(menu_subcategory_xpath));
 //        Action.mouseMove();
 //        new Actions(driver).moveByOffset(-x coordinate, -y coordinate).perform();
-        String menu_subcategory_xpath="//a[@href='https://gruplm.com/user/subcategory?language=en']";
+
+
+         String menu_subcategory_xpath="//a[@href='https://gruplm.com/user/subcategory?language=en']";
 
         Driver.waitPresence(By.xpath(menu_subcategory_xpath));
-        Driver.Click(menu_subcategory_xpath);
-
-        
-
-        
+        Driver.Click(menu_subcategory_xpath);   
         
     }
       private static void toAdditem() {    
-//          String domains_xpath="//p[contains(text(),'Domains & URLs')]";
-//        Driver.waitPresence(By.xpath(domains_xpath));
-//
-//        Driver.Click(domains_xpath);
-
+          String domains_xpath="//p[contains(text(),'Domains & URLs')]";
+        Driver.waitPresence(By.xpath(domains_xpath));
+        Driver.Click(domains_xpath);
+     
         String additem_xpath="//a[@href='https://gruplm.com/user/item/type']";
 
         Driver.waitPresence(By.xpath(additem_xpath));
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         Driver.Click(additem_xpath);
-
         
-
         
+        
+        //add item digital
+        Driver.Click("//h2[contains(text(),'Digital Product')]");  
+        String slider_xpath="//form[@action='https://gruplm.com/user/item/slider']";
+//        Driver.waitPresence(By.xpath(slider_xpath));
+        Driver.Click(slider_xpath);  
+       
+        Driver.getElement(slider_xpath).sendKeys("C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG");
+
+
+
         
     }
     
