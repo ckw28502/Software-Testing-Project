@@ -13,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
  *
  * @author User
  */
-public abstract class Action {
+public class Action {
     private static Actions action=null;
     
     public static void initAction(WebDriver driver){
@@ -25,8 +25,8 @@ public abstract class Action {
     public static void Scroll(WebElement element){
         action.scrollToElement(element);
     }
-    public static void mouseMove(){
-        action.moveByOffset(100,0).perform();
+    public static void mouseMove(int x, int y){
+        action.moveByOffset(x,y).perform();
     }
     public static void Click(WebElement element){
         action.click(element);

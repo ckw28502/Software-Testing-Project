@@ -259,7 +259,7 @@ public class Proyek {
 //        Driver.executeScript("arguments[0].scrollIntoView(true);", Driver.getElement(menu_subcategory_xpath));
 
 //        Driver.waitPresence(By.xpath(menu_subcategory_xpath));
-//        Action.mouseMove();
+//        Action.mouseMove(100,0);
 //        new Actions(driver).moveByOffset(-x coordinate, -y coordinate).perform();
 
 
