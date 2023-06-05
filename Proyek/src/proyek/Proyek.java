@@ -41,7 +41,12 @@ public class Proyek {
         Login(user);
         
         //Chose Theme
-//        chooseTheme();
+        chooseTheme();
+         try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
         toCategory();
         
 //        addCategory("civil", "Civil Litigation");
@@ -49,11 +54,13 @@ public class Proyek {
 //        
 //        addCategory("tax", "Taxation");
         toSubcategory();
-        addSubcategory("Commercial & Corporate Disputes","223");
-        addSubcategory("Property & Real Estate Disputes ","223");
-        addSubcategory("Economic Crime","230");
-        addSubcategory("Document & Financial Fraud","230");
-        addSubcategory("Corporate Income Tax","231");
+        
+//        addSubcategory("Commercial & Corporate Disputes","223");
+//        addSubcategory("Property & Real Estate Disputes ","223");
+        toAdditem();
+//        addSubcategory("Economic Crime","230");
+//        addSubcategory("Document & Financial Fraud","230");
+//        addSubcategory("Corporate Income Tax","231");
 
 
     }
@@ -131,14 +138,24 @@ public class Proyek {
     }
     
     private static void toCategory() {
-        Driver.Click("//p[contains(text(),'Shop Management')]");
+       
+        String shop_management_xpath="//p[contains(text(),'Shop Management')]";
+        Driver.waitPresence(By.xpath(shop_management_xpath));
+//
+        Driver.Click(shop_management_xpath);
         String menu_manageitem_xpath="//a[@href='#productManagement']";
         Driver.waitPresence(By.xpath(menu_manageitem_xpath));
+        
+        
+             Driver.waitPresence(By.xpath(menu_manageitem_xpath));
+
         Driver.Click(menu_manageitem_xpath);
+        
         String menu_category_xpath="//a[@href='https://gruplm.com/user/category?language=en']";
         Driver.waitPresence(By.xpath(menu_category_xpath));
         Driver.Click(menu_category_xpath);
         
+       
         
     }
     private static void addCategory(String path,String name) {
@@ -165,19 +182,38 @@ public class Proyek {
     }
     
     private static void addSubcategory(String name,String value) {
-        String addcategory_xpath="//a[@data-target='#createModal']";
+        String addsubcategory_xpath="//a[@data-target='#createModal']";
 
-        
+        Driver.Click(addsubcategory_xpath);
 
-        Driver.Click(addcategory_xpath);
         Driver.waitClick("//input[@name='name']");
-        Driver.SelectItem("//select[@name='user_language_id']","266");
-        Driver.SelectItem("//select[@name='category_id']",value);
 
         Driver.Type("//input[@name='name']", name );
 
+        
+        Driver.SelectItem("//select[@name='user_language_id']","266");
+
+        
+
+        
 //        Driver.SelectItem("status","1");
         Driver.SelectItem("//select[@name='status']", "1");
+        
+        
+        
+        Driver.SelectItem("//select[@name='category_id']",value);
+         try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Driver.SelectItem("//select[@name='category_id']",value);
+        
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
 //        select.selectByValue("1");
         Driver.Click("submitBtn");
         
@@ -189,6 +225,11 @@ public class Proyek {
         
     }
      private static void toSubcategory() {    
+          String domains_xpath="//p[contains(text(),'Domains & URLs')]";
+        Driver.waitPresence(By.xpath(domains_xpath));
+
+        Driver.Click(domains_xpath);
+        
 //        Driver.Click("//p[contains(text(),'Dashboard')]");
 //        Driver.Click("//p[contains(text(),'Shop Management')]");
 //        String menu_manageitem_xpath="//a[@href='#productManagement']";
@@ -207,12 +248,34 @@ public class Proyek {
 //        String menu_category_xpath="//a[@href='https://gruplm.com/user/category?language=en']";
 //        Driver.waitPresence(By.xpath(menu_category_xpath));
 //        Driver.Click(menu_category_xpath);
-
-        String menu_subcategory_xpath="//a[@href='https://gruplm.com/user/subcategory?language=en']";
+//        String scrollbar="//div[@class='scroll-bar ui-draggable ui-draggable-handle'";
+//        Action.Scroll(getElement(menu_subcategory_xpath));
+//<div class="scroll-bar ui-draggable ui-draggable-handle" style="height: 225px; top: 0px;"></div>
 //        Driver.executeScript("arguments[0].scrollIntoView(true);", Driver.getElement(menu_subcategory_xpath));
+
+//        Driver.waitPresence(By.xpath(menu_subcategory_xpath));
+//        Action.mouseMove();
+//        new Actions(driver).moveByOffset(-x coordinate, -y coordinate).perform();
+        String menu_subcategory_xpath="//a[@href='https://gruplm.com/user/subcategory?language=en']";
 
         Driver.waitPresence(By.xpath(menu_subcategory_xpath));
         Driver.Click(menu_subcategory_xpath);
+
+        
+
+        
+        
+    }
+      private static void toAdditem() {    
+//          String domains_xpath="//p[contains(text(),'Domains & URLs')]";
+//        Driver.waitPresence(By.xpath(domains_xpath));
+//
+//        Driver.Click(domains_xpath);
+
+        String additem_xpath="//a[@href='https://gruplm.com/user/item/type']";
+
+        Driver.waitPresence(By.xpath(additem_xpath));
+        Driver.Click(additem_xpath);
 
         
 

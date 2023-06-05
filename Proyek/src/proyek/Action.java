@@ -25,7 +25,9 @@ public abstract class Action {
     public static void Scroll(WebElement element){
         action.scrollToElement(element);
     }
-    
+    public static void mouseMove(){
+        action.moveByOffset(100,0).perform();
+    }
     public static void Click(WebElement element){
         action.click(element);
     }
