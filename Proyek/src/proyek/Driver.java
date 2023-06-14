@@ -28,11 +28,11 @@ public class Driver {
     private static Driver d=null;
     public  Driver(String url,int wait) {
         // Path Calvin Kwan
-//        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
+       String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
         // Path Ariel
 //        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
 //          Path timot
-         String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
+        // String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
         // Path victor
         //String path="D:\\Kuliah\\sem6\\Software Testing\\uas\\uas\\chromedriver.exe";
         
@@ -78,6 +78,15 @@ public class Driver {
     public static void waitClick(String by){
         d.wait.until(ExpectedConditions.elementToBeClickable(getElement(by)));
     }
+    
+    public static void waitEmpty(String by,String attribute){
+        d.wait.until(ExpectedConditions.not(ExpectedConditions.attributeToBeNotEmpty(getElement(by),attribute)));
+    }
+    
+    public static void waitNumberMore(By by, int attribute){
+        d.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(by, 2));
+    }
+    
     public static void SelectItem(String by, int id){
         Select select=new Select((getElement(by)));
         select.selectByIndex(id);
@@ -85,8 +94,13 @@ public class Driver {
     
     public static void SelectItem(String by, String value){
         Select select=new Select((getElement(by)));
-        select.selectByValue(value);
+        try {
+            select.selectByValue(value);
+        } catch (Exception e) {
+            select.selectByVisibleText(value);
+        }
     }
+    
     public static void SelectItemByIndex(String by, int value){
         Select select=new Select((getElement(by)));
         select.selectByIndex(value);

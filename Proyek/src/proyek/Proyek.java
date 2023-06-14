@@ -45,6 +45,7 @@ public class Proyek {
         // BACA SHEET
         User user=User.Init();
         cPortfolio.Init();
+        Portfolio.Init();
         // BUAT WEBSITE
         //createWebsite(user);
         
@@ -54,6 +55,11 @@ public class Proyek {
         //Chose Theme
         //chooseTheme();
         //homeSection();
+        
+        //Portfolio
+        //cPortfolio.addPortfolioCategory();
+        Portfolio.addPortfolio();
+
         
         
         //CONTACT - TIMI
@@ -66,11 +72,13 @@ public class Proyek {
         String longtitude ="112.752090";
         
                 
-        toAddContact(ctitle, subtitle, caddress, cphone, cemail, latitude, longtitude);
+        //toAddContact(ctitle, subtitle, caddress, cphone, cemail, latitude, longtitude);
         
         
         
         //KATEGORI
+
+
         //toCategory();
         
 //        addCategory("civil", "Civil Litigation");
@@ -189,7 +197,7 @@ public class Proyek {
         Action.buildPerform();
         Driver.Type("//input[@name='portfolio_title']","Our Portfolio");
         Driver.Type("//input[@name='portfolio_subtitle']","These are some of our portfolio");
-        Driver.getElement("testimonial_image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\"+"testimonial.png");
+        Driver.getElement("testimonial_image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\testimonial.png");
         Driver.Type("//input[@name='testimonial_title']","Testimonial");
         Driver.Type("//input[@name='testimonial_subtitle']","Psst.. hear out our previous customer opinions!!");
         Driver.Type("//input[@name='blog_title']","Blog");

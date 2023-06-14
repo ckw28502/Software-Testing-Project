@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -46,11 +47,29 @@ public class cPortfolio {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(list);
     }
     
-    public static void addPortfolioCategory(){
+    public static int getListSize(){
+        return list.size();
+    }
     
+    
+    public static void addPortfolioCategory(){
+        Driver.Type("//input[@name='term']","portf");
+        Driver.Click("//p[contains(text(),'Portfolio')]");
+        Driver.Click("//span[contains(text(),'Category')]");
+        for (cPortfolio cp : list) {
+            Driver.Click("//a[@data-target='#createModal']");
+            String xpath="//select[@name='user_language_id']";
+            Driver.waitVisibility(xpath);
+            Driver.SelectItem(xpath, "266");
+            Driver.Type("//input[@name='name']",cp.nama);
+            Driver.SelectItem("//select[@name='status']", "1");
+            Driver.Type("//input[@type='number']", cp.id);
+            Driver.Click("submitBtn");
+            Driver.waitDone();
+        }
+        Driver.waitDone();
     }
     
     
