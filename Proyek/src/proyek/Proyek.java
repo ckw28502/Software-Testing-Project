@@ -161,7 +161,7 @@ public class Proyek {
     }
     
     private static void homeSection() {
-        Driver.Type("//input[@name='term']","hero sections");
+        Driver.Type("//input[@name='term']","home sections");
         Driver.Click("//p[contains(text(),'Home')]");
         String menu_home_xpath=("//span[contains(text(),'Home Sections')]");
         Driver.waitVisibility(menu_home_xpath);
