@@ -65,13 +65,14 @@ public class Proyek {
 //        
 //        
         toSubcategory();
-        addSubcategory("Commercial & Corporate Disputes",1);
-        addSubcategory("Property & Real Estate Disputes ",1);
-        addSubcategory("Economic Crime",2);
-        addSubcategory("Document & Financial Fraud",2);
-        addSubcategory("Corporate Income Tax",3);
-        addSubcategory("Personal Income Tax",3);
+//        addSubcategory("Commercial & Corporate Disputes",1);
+//        addSubcategory("Property & Real Estate Disputes ",1);
+//        addSubcategory("Economic Crime",2);
+//        addSubcategory("Document & Financial Fraud",2);
+//        addSubcategory("Corporate Income Tax",3);
+//        addSubcategory("Personal Income Tax",3);
         
+        //UNTUK ADD ITEM - tim
         String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
         String uploadImage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_14_42_43_Pro.JPG";
@@ -79,7 +80,11 @@ public class Proyek {
         String filepath = "\\Images\\doc1.zip";
         String currentprice = "200";
         String prevprice = "600";
-        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
+        String title = "ini title JANGAN LUPA DIGANTI";
+        String tags = "ini tag JANGAN LUPA DIGANT";
+        String summary = "ini summary JANGAN LUPA DIGANT";
+        String description = "ini description JANGAN LUPA DIGANT";      
+        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice, title, tags, summary, description );
 
 
 
@@ -298,7 +303,7 @@ public class Proyek {
         
     }
      
-    private static void toAdditem(String sliderImage1, String sliderImage2, String uploadImage1, String uploadImage2, String filepath, String currentprice, String prevprice) {    
+    private static void toAdditem(String sliderImage1, String sliderImage2, String uploadImage1, String uploadImage2, String filepath, String currentprice, String prevprice, String title, String tags, String summary, String description) {    
         String domains_xpath="//p[contains(text(),'Domains & URLs')]";
         Driver.waitPresence(By.xpath(domains_xpath));
         Driver.Click(domains_xpath);
@@ -391,8 +396,41 @@ public class Proyek {
         }
         Driver.Click(subcat_xpath);
         
+        //isi title
+        String title_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[3]/div/input";
+        Driver.Click(title_xpath);
+        Driver.Type(title_xpath,title);
         
+        //isi tag
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String tag_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[2]/div[1]/div/div/input";
+        Driver.Click(tag_xpath);
+        Driver.Type(tag_xpath, tags);
         
+        //isi summary
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String summary_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[2]/div[2]/div/textarea";
+        Driver.Click(summary_xpath);
+        Driver.Type(summary_xpath, summary);
+        
+        //isi Desc
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String desc_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[3]/div/div/div/div[3]/div[2]";
+        Driver.Click(desc_xpath);
+        Driver.Type(desc_xpath, description);
+
 ////                  
 ////        String title_xpath=("//input[@type='text'|@name='en_title']");
 //        String title_xpath = ("//input[@name='en_title']");
