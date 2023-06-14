@@ -59,11 +59,11 @@ public class Proyek {
         }
         toCategory();
         
-        addCategory("civil", "Civil Litigation");
-        addCategory("criminal", "Criminal Litigation");
-        addCategory("tax", "Taxation");
-        
-        
+//        addCategory("civil", "Civil Litigation");
+//        addCategory("criminal", "Criminal Litigation");
+//        addCategory("tax", "Taxation");
+//        
+//        
         toSubcategory();
         addSubcategory("Commercial & Corporate Disputes",1);
         addSubcategory("Property & Real Estate Disputes ",1);
@@ -75,10 +75,10 @@ public class Proyek {
         String filepath = "\\Images\\doc1.zip";
         String currentprice = "200";
         String prevprice = "600";
-//        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
-//        addSubcategory("Economic Crime",2);
-//        addSubcategory("Document & Financial Fraud",2);
-//        addSubcategory("Corporate Income Tax",3);
+        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
+        addSubcategory("Economic Crime",2);
+        addSubcategory("Document & Financial Fraud",2);
+        addSubcategory("Corporate Income Tax",3);
 
 
     }
@@ -361,7 +361,34 @@ public class Proyek {
         } catch (InterruptedException ex) {
             Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select/option[2]");
+        int rancat = random.nextInt(3) + 1;
+        String cat_xpath= "";
+        if (rancat == 1) {
+            cat_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select/option[2]";
+        }else if (rancat == 2){
+            cat_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select/option[3]";
+        }else{
+            cat_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select/option[4]";
+        }
+        Driver.Click(cat_xpath);
+        
+        //select subcategory
+        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[2]/div/select");
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        double ran = random.nextDouble();
+        String sran = Double.toString(ran);
+        String subcat_xpath = "";
+        if (sran =="1") {
+            subcat_xpath=("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[2]/div/select/option[1]");
+        }else{
+            subcat_xpath=("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[2]/div/select/option[2]");
+        }
+        Driver.Click(subcat_xpath);
+        
         
         
 ////                  
