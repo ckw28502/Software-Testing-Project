@@ -5,6 +5,11 @@
  */
 package proyek;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 /**
  *
  * @author User
@@ -21,6 +26,30 @@ public class User {
         this.phone_number=data[5];
         this.company_name=data[6];
         this.country=data[7];
+    }
+    
+    public static User Init(){
+        String[] values={};
+        try {
+            URL url = new URL("https://docs.google.com/spreadsheets/d/e/2PACX-1vRhDKotdM2UE2rj8k8KUBG9Ww2CAGQZ22PWMYOtiQrmHAeDZx4WBZVdFG8Rmc_hN6JdzajYZ7JuhI3A/pub?gid=0&single=true&output=csv");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            boolean title=true;
+            String line; 
+            while ((line = reader.readLine()) != null) {
+                // Process each line of the CSV data
+                if(!title){
+                     values= line.split(",");
+                    return new User(values);
+                } else {
+                    title=false;
+                }
+            }
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String getFirst_name() {

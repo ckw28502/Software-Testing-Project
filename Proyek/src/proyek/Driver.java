@@ -7,6 +7,7 @@ package proyek;
 
 import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,11 +28,11 @@ public class Driver {
     private static Driver d=null;
     public  Driver(String url,int wait) {
         // Path Calvin Kwan
-//        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
+        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
         // Path Ariel
 //        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
 //          Path timot
-         String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
+         //String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
         
         System.setProperty("webdriver.chrome.driver",path);
         ChromeOptions option=new ChromeOptions();
@@ -51,7 +52,8 @@ public class Driver {
     
     public static void Click(String by){
         WebElement element=getElement(by);
-        element.click();
+         element.click();
+
     }
     
     public static void Type(String by, String text){
@@ -66,6 +68,11 @@ public class Driver {
     public static void waitPresence(By by){
         d.wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
+    
+    public static void waitDone(){
+        d.wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-notify='container']")));
+    }
+    
     public static void waitClick(String by){
         d.wait.until(ExpectedConditions.elementToBeClickable(getElement(by)));
     }

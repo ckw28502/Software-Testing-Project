@@ -40,38 +40,6 @@ public class Proyek {
     public static void main(String[] args) {
         Driver.initDriver("https://gruplm.com/", 60);
         Driver.Click("//button[contains(text(),'Allow cookies')]");
-        
-        // BACA SHEET
-        User user=ReadCSV();
-        
-        // BUAT WEBSITE
-        //createWebsite(user);
-        
-        //LOGIN
-        Login(user);
-        
-        //Chose Theme
-        chooseTheme();
-         try {
-            Thread.sleep(4000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        toCategory();
-        
-//        addCategory("civil", "Civil Litigation");
-//        addCategory("criminal", "Criminal Litigation");
-//        addCategory("tax", "Taxation");
-//        
-//        
-        toSubcategory();
-//        addSubcategory("Commercial & Corporate Disputes",1);
-//        addSubcategory("Property & Real Estate Disputes ",1);
-//        addSubcategory("Economic Crime",2);
-//        addSubcategory("Document & Financial Fraud",2);
-//        addSubcategory("Corporate Income Tax",3);
-//        addSubcategory("Personal Income Tax",3);
-        
         //UNTUK ADD ITEM - tim
         String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
@@ -83,8 +51,37 @@ public class Proyek {
         String title = "ini title JANGAN LUPA DIGANTI";
         String tags = "ini tag JANGAN LUPA DIGANT";
         String summary = "ini summary JANGAN LUPA DIGANT";
-        String description = "ini description JANGAN LUPA DIGANT";      
-        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice, title, tags, summary, description );
+        String description = "ini description JANGAN LUPA DIGANT";  
+        
+        // BACA SHEET
+        User user=User.Init();
+        cPortfolio.Init();
+        // BUAT WEBSITE
+        //createWebsite(user);
+        
+        //LOGIN
+        Login(user);
+        
+        //Chose Theme
+        //chooseTheme();
+        homeSection();
+        //toCategory();
+        
+//        addCategory("civil", "Civil Litigation");
+//        addCategory("criminal", "Criminal Litigation");
+//        addCategory("tax", "Taxation");
+//        
+//        
+        //toSubcategory();
+//        addSubcategory("Commercial & Corporate Disputes",1);
+//        addSubcategory("Property & Real Estate Disputes ",1);
+//        addSubcategory("Economic Crime",2);
+//        addSubcategory("Document & Financial Fraud",2);
+//        addSubcategory("Corporate Income Tax",3);
+//        addSubcategory("Personal Income Tax",3);
+        
+            
+        //toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice, title, tags, summary, description );
 
 
 
@@ -120,7 +117,7 @@ public class Proyek {
     private static User ReadCSV() {
         String[] values={};
         try {
-            URL url = new URL("https://docs.google.com/spreadsheets/d/e/2PACX-1vRhDKotdM2UE2rj8k8KUBG9Ww2CAGQZ22PWMYOtiQrmHAeDZx4WBZVdFG8Rmc_hN6JdzajYZ7JuhI3A/pub?output=csv");
+            URL url = new URL("https://docs.google.com/spreadsheets/d/e/2PACX-1vRhDKotdM2UE2rj8k8KUBG9Ww2CAGQZ22PWMYOtiQrmHAeDZx4WBZVdFG8Rmc_hN6JdzajYZ7JuhI3A/pub?gid=0&single=true&output=csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             boolean title=true;
             String line; 
@@ -159,6 +156,27 @@ public class Proyek {
         Driver.Click(menu_theme_xpath);
         Driver.Click("//img[@src='https://gruplm.com/assets/front/img/user/templates/home_six.png']");
         Driver.Click("submitBtn");
+        Driver.waitDone();
+
+    }
+    
+    private static void homeSection() {
+        Driver.Type("//input[@name='term']","hero sections");
+        String menu_home_xpath=("//span[contains(text(),'Home Sections')]");
+        Driver.waitVisibility(menu_home_xpath);
+        Action.Click(Driver.getElement(menu_home_xpath));
+        Action.buildPerform();
+        Driver.Type("//input[@name='portfolio_title']","Our Portfolio");
+        Driver.Type("//input[@name='portfolio_subtitle']","These are some of our portfolio");
+        Driver.getElement("testimonial_image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\"+"testimonial.png");
+        Driver.Type("//input[@name='testimonial_title']","Testimonial");
+        Driver.Type("//input[@name='testimonial_subtitle']","Psst.. hear out our previous customer opinions!!");
+        Driver.Type("//input[@name='blog_title']","Blog");
+        Driver.Type("//input[@name='blog_subtitle']","See our post!!!");
+        Driver.Type("//input[@name='quote_section_title']","Quote");
+        Driver.Type("//input[@name='quote_section_subtitle']","Send your wisdom here");
+        Driver.Click("submitBtn");
+        Driver.waitDone();
     }
     
     private static void toCategory() {

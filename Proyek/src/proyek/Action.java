@@ -28,11 +28,15 @@ public class Action {
     public static void mouseMove(int x, int y){
         action.moveByOffset(x,y).perform();
     }
+    
+    public static void moveTo(WebElement element){
+        action.moveToElement(element);
+    }
     public static void Click(WebElement element){
         action.click(element);
     }
     
-    public static void buildPerform(WebElement element){
+    public static void buildPerform(){
         action.build().perform();
     }
     
