@@ -70,6 +70,7 @@ public class Proyek {
         addSubcategory("Economic Crime",2);
         addSubcategory("Document & Financial Fraud",2);
         addSubcategory("Corporate Income Tax",3);
+        addSubcategory("Personal Income Tax",3);
         
         String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
