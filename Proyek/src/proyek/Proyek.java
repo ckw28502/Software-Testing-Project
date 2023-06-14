@@ -67,6 +67,9 @@ public class Proyek {
         toSubcategory();
         addSubcategory("Commercial & Corporate Disputes",1);
         addSubcategory("Property & Real Estate Disputes ",1);
+        addSubcategory("Economic Crime",2);
+        addSubcategory("Document & Financial Fraud",2);
+        addSubcategory("Corporate Income Tax",3);
         
         String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
@@ -76,9 +79,7 @@ public class Proyek {
         String currentprice = "200";
         String prevprice = "600";
         toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
-        addSubcategory("Economic Crime",2);
-        addSubcategory("Document & Financial Fraud",2);
-        addSubcategory("Corporate Income Tax",3);
+
 
 
     }
