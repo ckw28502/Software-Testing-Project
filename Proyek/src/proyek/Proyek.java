@@ -24,6 +24,7 @@ import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Paths;
+import java.util.Random;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -63,7 +64,7 @@ public class Proyek {
 //        
 //        addCategory("tax", "Taxation");
 //        toSubcategory();
-        
+//        
 //        addSubcategory("Commercial & Corporate Disputes","223");
 //        addSubcategory("Property & Real Estate Disputes ","223");
         
@@ -71,8 +72,10 @@ public class Proyek {
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
         String uploadImage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_14_42_43_Pro.JPG";
         String uploadImage2 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_15_05_08_Pro.JPG";
-
-        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2);
+        String filepath = "\\Images\\doc1.zip";
+        String currentprice = "200";
+        String prevprice = "600";
+        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
 //        addSubcategory("Economic Crime","230");
 //        addSubcategory("Document & Financial Fraud","230");
 //        addSubcategory("Corporate Income Tax","231");
@@ -292,7 +295,7 @@ public class Proyek {
         
     }
      
-    private static void toAdditem(String sliderImage1, String sliderImage2, String uploadImage1, String uploadImage2) {    
+    private static void toAdditem(String sliderImage1, String sliderImage2, String uploadImage1, String uploadImage2, String filepath, String currentprice, String prevprice) {    
         String domains_xpath="//p[contains(text(),'Domains & URLs')]";
         Driver.waitPresence(By.xpath(domains_xpath));
         Driver.Click(domains_xpath);
@@ -322,13 +325,45 @@ public class Proyek {
         Driver.getElement(uploadimg_xpath1).sendKeys(uploadImage1);
         Driver.getElement(uploadimg_xpath2).sendKeys(uploadImage2);
 
+        //file upload
+        String uploadfile_xpath="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[5]/div/div[1]/input";
+        Driver.getElement(uploadfile_xpath).sendKeys(Paths.get("").toAbsolutePath().toString()+filepath);
         
-//        Driver.Click("//select[@class='form-control ltr']");  
-//        
-//        String status_xpath=("//select[@class='form-control ltr']//option[@value=1]");
-//        Driver.waitPresence(By.xpath(status_xpath));
-//        Driver.Click(status_xpath);
-//                
+        //click dd status
+        Random random = new Random();
+        double randomNumber = random.nextDouble();
+        String res = Double.toString(randomNumber);
+        String status_xpath = "";
+        if (res =="1") {
+            status_xpath=("//select[@class='form-control ltr']//option[@value=1]");
+        }else{
+            status_xpath=("//select[@class='form-control ltr']//option[@value=0]");
+        }
+        Driver.Click("//select[@class='form-control ltr']");  
+        Driver.waitPresence(By.xpath(status_xpath));
+        Driver.Click(status_xpath);
+        
+        //input current price
+        String current_xpath= "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[6]/div[2]/div/input";
+        Driver.Click(current_xpath);
+        Driver.Type(current_xpath, currentprice);
+        
+        //input prev price
+        String prev_xpath= "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[6]/div[3]/div/input";
+        Driver.Click(prev_xpath);
+        Driver.Type(prev_xpath, prevprice);
+        
+        //select category
+        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select");
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[1]/div[1]/div/select/option[2]");
+        
+        
+////                  
 ////        String title_xpath=("//input[@type='text'|@name='en_title']");
 //        String title_xpath = ("//input[@name='en_title']");
 //         Driver.Click(title_xpath);
