@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 /**
  *
  * @author User
@@ -28,9 +29,9 @@ public class Driver {
         // Path Calvin Kwan
 //        String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
         // Path Ariel
-//        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
+        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
 //          Path timot
-         String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
+//         String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
         
         System.setProperty("webdriver.chrome.driver",path);
         ChromeOptions option=new ChromeOptions();
@@ -76,6 +77,10 @@ public class Driver {
     public static void SelectItem(String by, String value){
         Select select=new Select((getElement(by)));
         select.selectByValue(value);
+    }
+    public static void SelectItemByIndex(String by, int value){
+        Select select=new Select((getElement(by)));
+        select.selectByIndex(value);
     }
     
     public static WebElement getElement(String by){

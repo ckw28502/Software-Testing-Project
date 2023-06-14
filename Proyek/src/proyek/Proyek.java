@@ -59,14 +59,14 @@ public class Proyek {
         }
         toCategory();
         
-//        addCategory("civil", "Civil Litigation");
-//        addCategory("criminal", "Criminal Litigation");
-//        
-//        addCategory("tax", "Taxation");
-//        toSubcategory();
-//        
-//        addSubcategory("Commercial & Corporate Disputes","223");
-//        addSubcategory("Property & Real Estate Disputes ","223");
+        addCategory("civil", "Civil Litigation");
+        addCategory("criminal", "Criminal Litigation");
+        addCategory("tax", "Taxation");
+        
+        
+        toSubcategory();
+        addSubcategory("Commercial & Corporate Disputes",1);
+        addSubcategory("Property & Real Estate Disputes ",1);
         
         String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
@@ -75,10 +75,10 @@ public class Proyek {
         String filepath = "\\Images\\doc1.zip";
         String currentprice = "200";
         String prevprice = "600";
-        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
-//        addSubcategory("Economic Crime","230");
-//        addSubcategory("Document & Financial Fraud","230");
-//        addSubcategory("Corporate Income Tax","231");
+//        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice  );
+//        addSubcategory("Economic Crime",2);
+//        addSubcategory("Document & Financial Fraud",2);
+//        addSubcategory("Corporate Income Tax",3);
 
 
     }
@@ -211,7 +211,7 @@ public class Proyek {
         
     }
     
-    private static void addSubcategory(String name,String value) {
+    private static void addSubcategory(String name,int value) {
         String addsubcategory_xpath="//a[@data-target='#createModal']";
 
         Driver.Click(addsubcategory_xpath);
@@ -230,8 +230,9 @@ public class Proyek {
         Driver.SelectItem("//select[@name='status']", "1");
         
         
-        
-        Driver.SelectItem("//select[@name='category_id']",value);
+            
+
+        Driver.SelectItemByIndex("//select[@name='category_id']",value);
          try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {
