@@ -442,7 +442,11 @@ public class Proyek {
         }
         String desc_xpath = "/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/div/div[2]/div/div[3]/div/div/div/div[3]/div[2]";
         Driver.Click(desc_xpath);
-        Driver.Type(desc_xpath, description);
+        Driver.Type(desc_xpath, description+Keys.ENTER);
+        
+        
+        //submit
+        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[3]/div/div/div/button");
 
 ////                  
 ////        String title_xpath=("//input[@type='text'|@name='en_title']");
