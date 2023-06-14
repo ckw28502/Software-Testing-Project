@@ -21,6 +21,9 @@ import static proyek.Driver.getElement;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Paths;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -55,15 +58,15 @@ public class Proyek {
         }
         toCategory();
         
-//        addCategory("civil", "Civil Litigation");
-//        addCategory("criminal", "Criminal Litigation");
-//        
-//        addCategory("tax", "Taxation");
-        toSubcategory();
+        addCategory("civil", "Civil Litigation");
+        addCategory("criminal", "Criminal Litigation");
+        
+        addCategory("tax", "Taxation");
+//        toSubcategory();
         
 //        addSubcategory("Commercial & Corporate Disputes","223");
 //        addSubcategory("Property & Real Estate Disputes ","223");
-        toAdditem();
+//        toAdditem();
 //        addSubcategory("Economic Crime","230");
 //        addSubcategory("Document & Financial Fraud","230");
 //        addSubcategory("Corporate Income Tax","231");
@@ -171,7 +174,20 @@ public class Proyek {
         Driver.Click(addcategory_xpath);
         Driver.waitClick("//input[@name='name']");
         Driver.SelectItem("language","266");
-        Driver.getElement("image").sendKeys("D:\\SoftwareTesting\\Software-Testing-Project\\Images\\"+path+".jpeg");
+//        try{
+//                    FileOutputStream fileOut = new FileOutputStream("\\orderhis.ser");
+//                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//                    out.writeObject(arrorderhistory);
+//                    out.close();
+//                    fileOut.close();
+//                    System.out.println("order history Berhasil Disimpan");
+//                }
+//                catch (Exception e){
+//                    
+//                }
+        Driver.getElement("image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\"+path+".jpeg");
+//                Driver.getElement("image").sendKeys("D:\\SoftwareTesting\\Software-Testing-Project\\Images\\"+path+".jpeg");
+
         Driver.Type("//input[@name='name']", name);
 //        Driver.SelectItem("status","1");
         Driver.SelectItem("//select[@name='status']", "1");
