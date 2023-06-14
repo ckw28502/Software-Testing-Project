@@ -33,6 +33,8 @@ public class Driver {
 //        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
 //          Path timot
          //String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
+        // Path victor
+        //String path="D:\\Kuliah\\sem6\\Software Testing\\uas\\uas\\chromedriver.exe";
         
         System.setProperty("webdriver.chrome.driver",path);
         ChromeOptions option=new ChromeOptions();
