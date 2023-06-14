@@ -340,7 +340,6 @@ public class Proyek {
         //click dd status
         Random random = new Random();
         double randomNumber = random.nextDouble();
-        String res = Double.toString(randomNumber);
         String status_xpath = "//select[@class='form-control ltr']//option[@value=1]";
         Driver.Click("//select[@class='form-control ltr']");  
         Driver.waitPresence(By.xpath(status_xpath));
