@@ -58,15 +58,21 @@ public class Proyek {
         }
         toCategory();
         
-        addCategory("civil", "Civil Litigation");
-        addCategory("criminal", "Criminal Litigation");
-        
-        addCategory("tax", "Taxation");
+//        addCategory("civil", "Civil Litigation");
+//        addCategory("criminal", "Criminal Litigation");
+//        
+//        addCategory("tax", "Taxation");
 //        toSubcategory();
         
 //        addSubcategory("Commercial & Corporate Disputes","223");
 //        addSubcategory("Property & Real Estate Disputes ","223");
-//        toAdditem();
+        
+        String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
+        String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
+        String uploadImage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_14_42_43_Pro.JPG";
+        String uploadImage2 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_15_05_08_Pro.JPG";
+
+        toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2);
 //        addSubcategory("Economic Crime","230");
 //        addSubcategory("Document & Financial Fraud","230");
 //        addSubcategory("Corporate Income Tax","231");
@@ -286,39 +292,62 @@ public class Proyek {
         
     }
      
-    private static void toAdditem() {    
-          String domains_xpath="//p[contains(text(),'Domains & URLs')]";
+    private static void toAdditem(String sliderImage1, String sliderImage2, String uploadImage1, String uploadImage2) {    
+        String domains_xpath="//p[contains(text(),'Domains & URLs')]";
         Driver.waitPresence(By.xpath(domains_xpath));
         Driver.Click(domains_xpath);
      
         String additem_xpath="//a[@href='https://gruplm.com/user/item/type']";
 
         Driver.waitPresence(By.xpath(additem_xpath));
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         Driver.Click(additem_xpath);
-        
-        
         
         //add item digital
         Driver.Click("//h2[contains(text(),'Digital Product')]");  
+        
+        //input image slider
         String slider_xpath="//form[@action='https://gruplm.com/user/item/slider']";
+        imageitem(sliderImage1, slider_xpath);
+        imageitem(sliderImage2, slider_xpath);
+    
+        try {
+            Thread.sleep(1000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //isi image 
+        String uploadimg_xpath1="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[1]/input";
+        String uploadimg_xpath2="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[2]/input";
+        Driver.getElement(uploadimg_xpath1).sendKeys(uploadImage1);
+        Driver.getElement(uploadimg_xpath2).sendKeys(uploadImage2);
+
+        
+//        Driver.Click("//select[@class='form-control ltr']");  
+//        
+//        String status_xpath=("//select[@class='form-control ltr']//option[@value=1]");
+//        Driver.waitPresence(By.xpath(status_xpath));
+//        Driver.Click(status_xpath);
+//                
+////        String title_xpath=("//input[@type='text'|@name='en_title']");
+//        String title_xpath = ("//input[@name='en_title']");
+//         Driver.Click(title_xpath);
+//        Driver.Type(title_xpath,"asdasdadasdasdasdasdasd");
+    }
+    
+    
+    public static void imageitem(String imagePath, String slider_xpath){
+        
         Driver.waitPresence(By.xpath(slider_xpath));
         Driver.Click(slider_xpath);  
-        //Driver.getElement("my-dropzone").sendKeys("C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG");
         
-        //input image
-        String imagePath = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
         // Keyboardnya ngetik sendiri di filemanager
         StringSelection stringSelection = new StringSelection(imagePath);
         try {
-                  Thread.sleep(2000); // nek ga di wait ga konsisten
-              } catch (InterruptedException ex) {
-                  Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
-              }
+            Thread.sleep(2000); // nek ga di wait ga konsisten
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
         Robot robot;
         try {
@@ -343,18 +372,5 @@ public class Proyek {
         } catch (AWTException ex) {
             Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-// tidak perlu karena tidak di drag drop        
-//        WebElement targetElement = Driver.getElement("my-dropzone");
-//        Action.DragDrop(targetElement);
-        
-//        WebDriver driver = new ChromeDriver();  
-//        Actions actions = new Actions(driver);
-//            actions.clickAndHold(targetElement)
-//                .moveByOffset(10, 10) // Adjust the offset as needed
-//                .release()
-//                .build()
-//                .perform();
-    
     }
 }
