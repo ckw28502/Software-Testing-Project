@@ -40,18 +40,7 @@ public class Proyek {
     public static void main(String[] args) {
         Driver.initDriver("https://gruplm.com/", 60);
         Driver.Click("//button[contains(text(),'Allow cookies')]");
-        //UNTUK ADD ITEM - tim
-        String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
-        String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
-        String uploadImage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_14_42_43_Pro.JPG";
-        String uploadImage2 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_15_05_08_Pro.JPG";
-        String filepath = "\\Images\\doc1.zip";
-        String currentprice = "200";
-        String prevprice = "600";
-        String title = "ini title JANGAN LUPA DIGANTI";
-        String tags = "ini tag JANGAN LUPA DIGANT";
-        String summary = "ini summary JANGAN LUPA DIGANT";
-        String description = "ini description JANGAN LUPA DIGANT";  
+         
         
         // BACA SHEET
         User user=User.Init();
@@ -64,7 +53,24 @@ public class Proyek {
         
         //Chose Theme
         //chooseTheme();
-        homeSection();
+        //homeSection();
+        
+        
+        //CONTACT - TIMI
+        String ctitle = "Timothy Axel";
+        String subtitle = "Programmer mager";
+        String caddress = "Jalan Bunga Mawar 123";
+        String cphone ="08960489357";
+        String cemail ="timothy@gmail.com";
+        String latitude = "-7.257472";
+        String longtitude ="112.752090";
+        
+                
+        toAddContact(ctitle, subtitle, caddress, cphone, cemail, latitude, longtitude);
+        
+        
+        
+        //KATEGORI
         //toCategory();
         
 //        addCategory("civil", "Civil Litigation");
@@ -72,6 +78,8 @@ public class Proyek {
 //        addCategory("tax", "Taxation");
 //        
 //        
+
+        //SUB KATEGORI
         //toSubcategory();
 //        addSubcategory("Commercial & Corporate Disputes",1);
 //        addSubcategory("Property & Real Estate Disputes ",1);
@@ -80,7 +88,19 @@ public class Proyek {
 //        addSubcategory("Corporate Income Tax",3);
 //        addSubcategory("Personal Income Tax",3);
         
-            
+        //ADD ITEM - TIMI
+        //UNTUK ADD ITEM - tim
+        String sliderimage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20221109_18_31_06_Pro.JPG";
+        String sliderimage2 = "C:\\Users\\HP\\Pictures\\Screenshots\\Screenshot 2023-03-21 211139.png";
+        String uploadImage1 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_14_42_43_Pro.JPG";
+        String uploadImage2 = "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20230609_15_05_08_Pro.JPG";
+        String filepath = "\\Images\\doc1.zip";
+        String currentprice = "200";
+        String prevprice = "600";
+        String title = "ini title JANGAN LUPA DIGANTI";
+        String tags = "ini tag JANGAN LUPA DIGANT";
+        String summary = "ini summary JANGAN LUPA DIGANT";
+        String description = "ini description JANGAN LUPA DIGANT"; 
         //toAdditem(sliderimage1, sliderimage2, uploadImage1, uploadImage2, filepath, currentprice, prevprice, title, tags, summary, description );
 
 
@@ -455,6 +475,54 @@ public class Proyek {
 //        Driver.Type(title_xpath,"asdasdadasdasdasdasdasd");
     }
     
+    private static void toAddContact(String title, String subtitle, String address, String phone, String email, String latitude, String longtitude){
+        Driver.Click("/html/body/div[1]/div[2]/div/div[1]/div/ul/li[17]/a");
+        
+        //upload image
+        String filepath = "\\Images\\tino.jpg";
+        String uploadimage_xpath="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[1]/div/div/input";
+        Driver.getElement(uploadimage_xpath).sendKeys(Paths.get("").toAbsolutePath().toString()+filepath);
+        
+        //form title
+        String title_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[2]/input";
+        Driver.Click(title_xpath);
+        Driver.Type(title_xpath, title);
+        
+        //form subtitle
+        String subtitle_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[3]/input";
+        Driver.Click(subtitle_xpath);
+        Driver.Type(subtitle_xpath, subtitle);
+        
+        //form address
+        String address_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[4]/textarea";
+        Driver.Click(address_xpath);
+        Driver.Type(address_xpath, address);    
+        
+        //form phone
+        String phone_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[5]/div/input";
+        Driver.Click(phone_xpath);
+        Driver.Type(phone_xpath, phone+Keys.ENTER); 
+        
+        //form email
+        String email_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[6]/div/input";
+//        Driver.Click(email_xpath);
+        Driver.Type(email_xpath, email+Keys.ENTER); 
+        
+        //form latitude
+        String latitude_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[7]/input";
+        Driver.Click(latitude_xpath);
+        Driver.Type(latitude_xpath, latitude); 
+        
+        //form longtitude
+        String longtitude_xpath ="/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[2]/div/div/form/div[8]/input";
+        Driver.Click(longtitude_xpath);
+        Driver.Type(longtitude_xpath, longtitude); 
+        
+        //click button submit
+        
+        Driver.Click("/html/body/div[1]/div[3]/div/div/div[2]/div/div/div[3]/div/div/button");
+        Driver.waitDone();
+    }
     
     public static void imageitem(String imagePath, String slider_xpath){
         
