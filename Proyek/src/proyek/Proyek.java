@@ -58,9 +58,15 @@ public class Proyek {
         
         //Portfolio
         //cPortfolio.addPortfolioCategory();
-        Portfolio.addPortfolio();
+//        Portfolio.addPortfolio();
 
-        
+//        ToTestimonial
+toTestimonial();
+addTestimonial("civil", "Ariel","Entepreneur","This firm is very good","1");
+addTestimonial("tax", "Calvin","Accountant","Very precise","2");
+
+addTestimonial("criminal", "Saul","Lawyer","World Second best lawyer","3");
+
         
         //CONTACT - TIMI
         String ctitle = "Timothy Axel";
@@ -230,6 +236,8 @@ public class Proyek {
         
     }
     private static void addCategory(String path,String name) {
+        
+        Driver.waitClick("//a[@data-target='#createModal']");
         String addcategory_xpath="//a[@data-target='#createModal']";
 
         
@@ -568,5 +576,67 @@ public class Proyek {
         } catch (AWTException ex) {
             Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private static void toTestimonial() {
+       
+        String home_xpath="//p[contains(text(),'Home')]";
+        Driver.waitPresence(By.xpath(home_xpath));
+//
+        Driver.Click(home_xpath);
+        String testimonial_xpath="//a[@href='https://gruplm.com/user/testimonials?language=en']";
+        Driver.waitPresence(By.xpath(testimonial_xpath));
+        
+      
+
+        Driver.Click(testimonial_xpath);
+        
+       
+        
+    }
+    private static void addTestimonial(String path,String name,String occupation,String feedback,String sernum) {
+        String addcategory_xpath="//a[@data-target='#createModal']";
+
+        
+
+        Driver.Click(addcategory_xpath);
+        
+        Driver.waitClick("//input[@name='name']");
+        Driver.getElement("image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\"+path+".jpeg");
+                Driver.SelectItem("//select[@name='user_language_id']","266");
+
+//        try{
+//                    FileOutputStream fileOut = new FileOutputStream("\\orderhis.ser");
+//                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//                    out.writeObject(arrorderhistory);
+//                    out.close();
+//                    fileOut.close();
+//                    System.out.println("order history Berhasil Disimpan");
+//                }
+//                catch (Exception e){
+//                    
+//                }
+        
+//                Driver.getElement("image").sendKeys("D:\\SoftwareTesting\\Software-Testing-Project\\Images\\"+path+".jpeg");
+
+        Driver.Type("//input[@name='name']", name);
+                Driver.Type("//input[@name='occupation']", occupation);
+
+        Driver.Type("//div[@class='note-editable card-block']", feedback);
+        Driver.Type("//input[@name='serial_number']", sernum);
+
+//        Driver.SelectItem("status","1");
+//        select.selectByValue("1");
+        Driver.Click("submitBtn");
+        Driver.waitDone();
+//        Driver.waitDone();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Proyek.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        Driver.Type("//input[@name='occupation']", occupation);
+
+        
     }
 }

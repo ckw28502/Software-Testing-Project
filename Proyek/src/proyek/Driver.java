@@ -28,9 +28,9 @@ public class Driver {
     private static Driver d=null;
     public  Driver(String url,int wait) {
         // Path Calvin Kwan
-       String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
+//       String path="D:\\Software Testing\\Chromedriver\\chromedriver.exe";       
         // Path Ariel
-//        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
+        String path="D:\\SoftwareTesting\\chromedriver\\chromedriver.exe";
 //          Path timot
         // String path="C:\\Users\\HP\\Documents\\Kuliah\\sem6\\st\\chromedriver_win32\\chromedriver.exe";
         // Path victor
