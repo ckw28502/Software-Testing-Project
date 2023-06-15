@@ -69,7 +69,6 @@ public class cPortfolio {
             Driver.Click("submitBtn");
             Driver.waitDone();
         }
-        Driver.waitDone();
     }
     
     

@@ -26,7 +26,7 @@ public class Portfolio {
         for (Portfolio p : list) {
             Driver.Click("//a[@data-target='#createModal']");
             String id="my-dropzone";
-            String path=Paths.get("").toAbsolutePath().toString()+"\\Images\\"+p.image;
+            String path=Paths.get("").toAbsolutePath().toString()+"\\Images\\portfolio\\"+p.image;
             Driver.waitVisibility(id);
             Proyek.imageitem(path, "//form[@id='my-dropzone']");
             Driver.Type("image",path);
@@ -42,7 +42,6 @@ public class Portfolio {
             Driver.Click("submitBtn");
             Driver.waitDone();
         }
-        Driver.waitDone();
     }
 
     String image,category,title,id,desc,status;

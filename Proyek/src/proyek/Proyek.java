@@ -46,6 +46,7 @@ public class Proyek {
         User user=User.Init();
         cPortfolio.Init();
         Portfolio.Init();
+        Service.Init();
         // BUAT WEBSITE
         //createWebsite(user);
         
@@ -61,12 +62,14 @@ public class Proyek {
 //        Portfolio.addPortfolio();
 
 //        ToTestimonial
-toTestimonial();
-addTestimonial("civil", "Ariel","Entepreneur","This firm is very good","1");
-addTestimonial("tax", "Calvin","Accountant","Very precise","2");
+        toTestimonial();
+        addTestimonial("civil", "Ariel","Entepreneur","This firm is very good","1");
+        addTestimonial("tax", "Calvin","Accountant","Very precise","2");
 
-addTestimonial("criminal", "Saul","Lawyer","World Second best lawyer","3");
+        addTestimonial("criminal", "Saul","Lawyer","World Second best lawyer","3");
 
+        Service.addServices();
+        
         
         //CONTACT - TIMI
         String ctitle = "Timothy Axel";
@@ -203,7 +206,7 @@ addTestimonial("criminal", "Saul","Lawyer","World Second best lawyer","3");
         Action.buildPerform();
         Driver.Type("//input[@name='portfolio_title']","Our Portfolio");
         Driver.Type("//input[@name='portfolio_subtitle']","These are some of our portfolio");
-        Driver.getElement("testimonial_image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\testimonial.png");
+        Driver.getElement("testimonial_image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\testimonial-icon.png");
         Driver.Type("//input[@name='testimonial_title']","Testimonial");
         Driver.Type("//input[@name='testimonial_subtitle']","Psst.. hear out our previous customer opinions!!");
         Driver.Type("//input[@name='blog_title']","Blog");
