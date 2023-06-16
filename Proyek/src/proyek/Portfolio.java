@@ -21,7 +21,6 @@ public class Portfolio {
 
     static void addPortfolio() {
         Driver.Type("//input[@name='term']","portf");
-        Driver.Click("//p[contains(text(),'Portfolio')]");
         Driver.Click("//span[contains(text(),'Portfolios')]");
         for (Portfolio p : list) {
             Driver.Click("//a[@data-target='#createModal']");
@@ -30,10 +29,10 @@ public class Portfolio {
             Driver.waitVisibility(id);
             Proyek.imageitem(path, "//form[@id='my-dropzone']");
             Driver.Type("image",path);
-            Driver.SelectItem("language", "266");
+            Driver.SelectItem("language", "English");
             id="pcategory";
             Driver.waitNumberMore(By.xpath("//select[@id='pcategory']/option"), 2);
-            Driver.SelectItem(id,cPortfolio.getListSize()-Integer.parseInt(p.category)+1);
+            Driver.SelectItem(id,Category.getListSize()-Integer.parseInt(p.category)+1);
             Driver.SelectItem("status", p.status);
             Driver.Type("//input[@name='title']",p.title);
             Driver.Type("//input[@type='number']",p.id);

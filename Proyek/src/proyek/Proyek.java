@@ -44,22 +44,23 @@ public class Proyek {
         
         // BACA SHEET
         User user=User.Init();
-        cPortfolio.Init();
+        Category.Init();
         Portfolio.Init();
         Service.Init();
+        Blog.Init();
         // BUAT WEBSITE
-        //createWebsite(user);
+        createWebsite(user);
         
         //LOGIN
         Login(user);
         
         //Chose Theme
-        //chooseTheme();
-        //homeSection();
+        chooseTheme();
+        homeSection();
         
         //Portfolio
-        //cPortfolio.addPortfolioCategory();
-//        Portfolio.addPortfolio();
+        Category.addPortfolioCategory();
+        Portfolio.addPortfolio();
 
 //        ToTestimonial
         toTestimonial();
@@ -70,6 +71,10 @@ public class Proyek {
 
         Service.addServices();
         
+        //Blog
+        
+        Category.addBlogCategory();
+        Blog.addBlog();
         
         //CONTACT - TIMI
         String ctitle = "Timothy Axel";
@@ -81,8 +86,9 @@ public class Proyek {
         String longtitude ="112.752090";
         
                 
-        //toAddContact(ctitle, subtitle, caddress, cphone, cemail, latitude, longtitude);
+        toAddContact(ctitle, subtitle, caddress, cphone, cemail, latitude, longtitude);
         
+        Driver.Click("//a[@href='https://gruplm.com/"+user.getUsername()+"']");
         
         
         //KATEGORI
@@ -247,7 +253,7 @@ public class Proyek {
 
         Driver.Click(addcategory_xpath);
         Driver.waitClick("//input[@name='name']");
-        Driver.SelectItem("language","266");
+        Driver.SelectItem("language","English");
 //        try{
 //                    FileOutputStream fileOut = new FileOutputStream("\\orderhis.ser");
 //                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -286,7 +292,7 @@ public class Proyek {
         Driver.Type("//input[@name='name']", name );
 
         
-        Driver.SelectItem("//select[@name='user_language_id']","266");
+        Driver.SelectItem("//select[@name='user_language_id']","English");
 
         
 
@@ -606,7 +612,7 @@ public class Proyek {
         
         Driver.waitClick("//input[@name='name']");
         Driver.getElement("image").sendKeys(Paths.get("").toAbsolutePath().toString()+"\\Images\\"+path+".jpeg");
-                Driver.SelectItem("//select[@name='user_language_id']","266");
+                Driver.SelectItem("//select[@name='user_language_id']","English");
 
 //        try{
 //                    FileOutputStream fileOut = new FileOutputStream("\\orderhis.ser");

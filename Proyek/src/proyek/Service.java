@@ -26,7 +26,7 @@ public class Service {
             String xpath="//input[@id='image']";
             Driver.waitVisibility(xpath);
             Driver.Type(xpath, Paths.get("").toAbsolutePath().toString()+"\\Images\\Service\\"+s.image);
-            Driver.SelectItem("//select[@name='user_language_id']", "266");
+            Driver.SelectItem("//select[@name='user_language_id']", "English");
             Driver.Type("//input[@name='name']", s.name);
             Driver.Type("//input[@type='number']", s.id);
             Driver.Click("featured");
