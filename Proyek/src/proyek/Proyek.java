@@ -589,10 +589,17 @@ public class Proyek {
     
     private static void toTestimonial() {
        
+
         String home_xpath="//p[contains(text(),'Home')]";
         Driver.waitPresence(By.xpath(home_xpath));
 //
         Driver.Click(home_xpath);
+        
+        String domains_xpath="//p[contains(text(),'Domains & URLs')]";
+        Driver.waitPresence(By.xpath(domains_xpath));
+
+        Driver.Click(domains_xpath);
+        
         String testimonial_xpath="//a[@href='https://gruplm.com/user/testimonials?language=en']";
         Driver.waitPresence(By.xpath(testimonial_xpath));
         
